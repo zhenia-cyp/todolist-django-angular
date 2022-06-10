@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-c93cbx$2b99tm5aau-6t7a16944j40qz%050!(qg$azi1%x4th
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     "http://localhost:4200",
     "http://127.0.0.1:8000",
@@ -49,7 +49,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     'rest_framework.authentication.BasicAuthentication',
-    # 'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.SessionAuthentication',
     # 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
@@ -68,10 +68,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
     'user',
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,6 +81,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'backend.urls'

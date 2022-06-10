@@ -1,0 +1,34 @@
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+  <div class="container">
+    <div>
+      <h1>Log in</h1>
+
+      <hr />
+
+      <label for="username"><b>Username</b></label>
+      <input
+        type="text"
+        placeholder="Enter username"
+        formControlName="username"
+        required
+      />
+
+      <label for="psw"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter password"
+        formControlName="password"
+      />
+
+      <hr />
+      <div class="signin">
+        <div></div>
+        <div>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </div>
+
+      <button type="submit" class="registerbtn">login</button>
+    </div>
+  </div>
+</form>
