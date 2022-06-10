@@ -1,0 +1,42 @@
+.header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+}
+.containar {
+  background: #2388db;
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+}
+.headerMenu {
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.headerMenu li {
+  list-style: none;
+  padding: 20px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+.headerMenu a {
+  color: white;
+  text-decoration: none;
+  padding-bottom: 8px;
+}
+
+.headerMenu a:hover {
+  border-bottom: 2px solid #f8fafa;
+  transition: 0.1s;
+}

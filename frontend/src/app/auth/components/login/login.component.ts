@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.api.loginUser(Username, Password).subscribe({
       next: (data) => {
         console.log('data: ', data);
-        this.router.navigate(['/auth/']);
+        this.router.navigate(['/home']);
       },
       error: (e) => {
         console.log('errors: ', e);
