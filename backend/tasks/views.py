@@ -22,13 +22,11 @@ class CreateTaskViews(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class GetTaskByUser(generics.ListAPIView):
-    """получить все задачи конкретного пользователя"""
+class GetTaskByToken(generics.ListAPIView):
     serializer_class = TaskSerializer
 
     def get_queryset(self):
-        user_pk = self.kwargs['user_pk']
-        return Task.objects.filter(user_id=user_pk).order_by('-id')
+        return Task.objects.filter(user_id=self.request.user.id).order_by('-id')
 
 
 
