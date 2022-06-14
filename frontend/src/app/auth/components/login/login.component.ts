@@ -19,10 +19,11 @@ export class LoginComponent implements OnInit {
       password: new FormControl(''),
     });
   }
+
   login = (Username: string, Password: string) => {
     this.api.loginUser(Username, Password).subscribe({
       next: (data) => {
-        console.log('data: ', data);
+        localStorage.setItem('token', data.auth_token);
         this.router.navigate(['/home']);
       },
       error: (e) => {

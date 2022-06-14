@@ -1,0 +1,9 @@
+<div class="task">
+  <div class="containar">
+    <div *ngFor="let item of taskListToken">
+      <p>{{ item.title }}</p>
+      <span>статус: {{ item.status.name }}</span>
+      <hr />
+    </div>
+  </div>
+</div>
