@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 
 from tasks.models import Category,Status,Task
 
@@ -14,3 +15,4 @@ class TaskAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Status, CategoryAdmin)
+
