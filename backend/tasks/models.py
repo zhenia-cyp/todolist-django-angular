@@ -36,8 +36,8 @@ class Task(models.Model):
     """модель задачи task"""
     title = models.CharField('заголовок', max_length=200)
     text = models.TextField('описание задачи')
-    starttime = models.DateTimeField('время создания',auto_now=True)
-    endtime = models.DateTimeField('время завершения', auto_now=True)
+    starttime = models.DateTimeField('время создания',auto_now_add=True)
+    endtime = models.DateTimeField('время завершения',auto_now_add=False)
     category = models.ForeignKey(Category,verbose_name='категория задачи',on_delete=models.CASCADE)
     status = models.ForeignKey(Status,verbose_name='текущий статус',on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)

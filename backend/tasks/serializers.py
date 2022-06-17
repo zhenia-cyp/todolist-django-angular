@@ -28,8 +28,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 class TaskSmallSerializer(serializers.ModelSerializer):
     "simple task serializer "
-    starttime = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
-    endtime = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
+
     class Meta:
         model = Task
         fields = ['category','title','text','status','starttime','endtime']

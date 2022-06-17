@@ -43,6 +43,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 REST_FRAMEWORK = {
+    'DATE_INPUT_FORMATS': ['%Y-%m-%d %H:%M',],
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M',
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     # 'PAGE_SIZE': 2
