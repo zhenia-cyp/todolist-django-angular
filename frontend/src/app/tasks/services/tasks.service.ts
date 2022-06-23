@@ -12,11 +12,14 @@ export class TasksService {
   constructor(private http: HttpClient) {}
 
   getTaskByToken(Token: string) {
-    return this.http.get(this.baseurl + '/api/v1/tasks/list/task/user/', {
+    return this.http.get(this.baseurl + '/api/v1/tasks/list/tasks/user/', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Token ' + Token,
       },
     });
+  }
+  getIteamTask(Id: string): Observable<any> {
+    return this.http.get(this.baseurl + '/api/v1/tasks/item/' + Id + '/');
   }
 }

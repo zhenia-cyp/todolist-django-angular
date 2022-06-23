@@ -8,12 +8,14 @@ import { HomeModule } from './home/home.module';
 import { HeaderModule } from './header/header/header.module';
 import { FooterModule } from './footer/footer.module';
 import { TasksModule } from './tasks/tasks.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     AuthModule,
     HomeModule,
     HeaderModule,
