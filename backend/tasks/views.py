@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status
@@ -5,12 +6,31 @@ from tasks.serializers import StatusSerializer, TaskSmallSerializer, TaskSeriali
 from tasks.models import *
 from datetime import datetime
 
+
+
+class ItemTaskViews(APIView):
+    """получаем конкретную задачу по id"""
+    def get_object(self, pk):
+        try:
+            return Task.objects.get(pk=pk)
+        except Task.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = TaskSerializer(snippet)
+        return Response(serializer.data)
+
+
+
+
 class GetListAllTask(generics.ListAPIView):
     """список всех задач"""
     serializer_class = TaskSerializer
 
     def get_queryset(self):
         return Task.objects.all()
+
 
 
 class CreateTaskViews(APIView):
@@ -23,7 +43,8 @@ class CreateTaskViews(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class GetTaskByToken(generics.ListAPIView):
+
+class GetTasksByToken(generics.ListAPIView):
     """получить задачи по токену"""
     serializer_class = TaskSerializer
 
@@ -47,6 +68,7 @@ class CreateStatusViews(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
 class CreateCategoryViews(APIView):
     """cоздает категорию"""
     def post(self,request):
@@ -55,6 +77,7 @@ class CreateCategoryViews(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class ChangeStatus():
