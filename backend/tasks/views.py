@@ -21,6 +21,16 @@ class ItemTaskViews(APIView):
         serializer = TaskSerializer(snippet)
         return Response(serializer.data)
 
+    """редактируем текущую задачу"""
+    def patch(self, request, pk):
+        obj = self.get_object(pk)
+        # set partial=True to update a data partially
+        serializer = TaskSerializer(obj, data=request.data,partial=True)  # set partial=True to update a data partially
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 
